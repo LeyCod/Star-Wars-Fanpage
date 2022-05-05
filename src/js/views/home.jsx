@@ -6,16 +6,13 @@ import { getPeople } from "../service/people.js"
 import { getPlanets } from "../service/planets.js";
 import { getVehicles } from "../service/vehicles.js";
 //Styles
-import "../../styles/home.css";
+
 //Components
 import Card from "../component/card.jsx";
 
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	const [peopleList, setPeopleList] = useState([]);
-	console.log("store:", store);
-	console.log("actions", actions);
 
 	const getData = async () => {
 
@@ -29,7 +26,6 @@ export const Home = () => {
 			const vehiclesRes = await getVehicles(); 
 			const vehiclesJson = await vehiclesRes.json()
 			actions.setVehicles(vehiclesJson.results)
-			console.log(vehiclesJson.results)
 
 		} catch (err) {
 			console.log(err);

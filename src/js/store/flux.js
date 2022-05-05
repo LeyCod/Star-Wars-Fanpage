@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			storePeople: [],
 			storePlanets: [],
 			storeVehicles: [], 
-			storeFavorites: []
+			storeFavorites: [], 
+			storeDetails: {} 
 		},
 		
 		actions: {
@@ -23,15 +24,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({...store, storeVehicles:vehicles})
 			}, 
 			
-			setFavorites: (favorite)=>{
+			setFavorites: (name)=>{
 				const store = getStore()
-				setStore({...store, storeFavorites:[...store.storeFavorites, favorite]})
-			} 
+				setStore({...store, storeFavorites:[...store.storeFavorites, name]})
+			}, 
+			
+			deleteFavorites: (name) => {
+				const store = getStore();
+					setStore({...store, storeFavorites:[store.storeFavorites.filter((fav) => fav != name)]})
+				
+			}
 
 			}
 		}
 	};
-
+	console.log(store.setFavorites);
 
 export default getState;
 
