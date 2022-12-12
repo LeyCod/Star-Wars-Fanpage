@@ -23,26 +23,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore()
 				setStore({...store, storeVehicles:vehicles})
 			}, 
-			
-			setFavorites: (name)=>{
+
+			setFavorites: () => {
+				const store = getStore();
+				return [...store.storeFavorites];
+			},
+
+			addFavorites: (name)=>{
 				const store = getStore()
-				setStore({...store, storeFavorites:[...store.storeFavorites, name]})
+				setStore({ storeFavorites:[...store.storeFavorites, name]})
 			}, 
-			
+
 			deleteFavorites: (name) => {
 				const store = getStore();
-					setStore({...store, storeFavorites:[store.storeFavorites.filter((fav) => fav != name)]})
+					setStore({storeFavorites:store.storeFavorites.filter((fav) => fav !== name)})
 				
 			}
-
 			}
 		}
 	};
-	console.log(store.setFavorites);
 
 export default getState;
-
-/**
- * TODO printear el len de storeFavorites en el numero de favoritos.
- * TODO printear el nombre de cada favorito en el desplegable de favoritos.
- */

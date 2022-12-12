@@ -5,12 +5,12 @@ import { Context } from "../store/appContext"
 import Logo from "../../assets/img/SwLogo.png";
 import { FaTrashAlt } from "react-icons/fa";
 //Components
-import { SearchBar } from "./searchBar/searchBar.jsx";
+import { SearchBar } from "./Search-Bar/searchBar.jsx";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-dark bg-dark justify-content-around border border-warning">
+		<nav className="navbar navbar-dark bg-dark justify-content-around border border-3 border-warning">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1"><img src={Logo} alt="Star Wars logo" width="150px" height="100" /></span>
 			</Link>
@@ -19,11 +19,11 @@ export const Navbar = () => {
 			<SearchBar/>
 
 			</div>
-			<div class="dropdown">
-			<button className="btn btn-warning btn-lg dropdown-toggler" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">favorites <span className="favCounter"> {store.storeFavorites.lenght} </span></button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<div className="dropdown">
+			<button className="btn btn-warning btn dropdown-toggler" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">favorites <span class="badge">{store.storeFavorites.length}</span></button>
+				<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 				{store.storeFavorites.map((fav, index) => {
-					<li key={index}><Link class="dropdown-item" href="#">{fav}</Link> <FaTrashAlt onClick={()=>actions.deleteFavorites(fav)}/></li>
+					return <li key={index}><Link to="/" className="dropdown-item" href="#">{fav} <FaTrashAlt onClick={()=>actions.deleteFavorites(fav)}/></Link></li>
 				})}
 				</ul>
 			</div>
@@ -31,7 +31,4 @@ export const Navbar = () => {
 	);
 };
 
-/**
- * TODO len.storeFavorite
- * ? actions.storeFavorites().lenght
- **/
+

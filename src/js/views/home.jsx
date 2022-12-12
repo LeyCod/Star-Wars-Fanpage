@@ -8,7 +8,7 @@ import { getVehicles } from "../service/vehicles.js";
 //Styles
 
 //Components
-import Card from "../component/card.jsx";
+import Card from "../component/Card/card.jsx";
 
 
 export const Home = () => {
@@ -40,10 +40,10 @@ export const Home = () => {
 		<div className="container-fluid bg-dark">
             <div className="row justify-content-center">
                 <div className="col-10 g-0">
-                    <div className="main-section-content ">
+                    <div className="main-section-content">
                         <h1 className="sec-Title my-3 text-warning text-center">Characters</h1>
                         <div className="sec-cards bg-dark row justify-content-center">
-							{store.storePeople.map((people, index)=> <Card name={people.name} key={index}/>)}
+							{store.storePeople.map((people, index)=> <Card name={people.name} type={"characters"} id={people.uid} key={index}/>)}
 						</div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export const Home = () => {
                     <div className="main-section-content ">
                         <h1 className="sec-Title my-3 text-warning text-center">Planets</h1>
                         <div className="sec-cards row justify-content-center">
-							{store.storePlanets.map((planet, index)=> <Card name={planet.name} key={index}/>)}
+							{store.storePlanets.map((planet, index)=> <Card name={planet.name} type={"planets"} id={planet.uid} key={index}/>)}
 						</div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export const Home = () => {
                     <div className="main-section-content ">
                         <h1 className="sec-Title my-3 text-warning text-center">Vehicles</h1>
                         <div className="sec-cards row justify-content-center">
-							{store.storeVehicles.map((vehicle, index)=> <Card name={vehicle.name} key={index}/>)}
+							{store.storeVehicles.map((vehicle, index)=> <Card name={vehicle.name} type={"vehicles"} id={vehicle.uid} key={index}/>)}
 						</div>
                     </div>
                 </div>
