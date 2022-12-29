@@ -2,10 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop.jsx";
 
+//Views
 import { Home } from "./views/home.jsx";
+import { Detail } from "./views/Detail/detail.jsx";
 
 import injectContext from "./store/appContext";
 
+//Components
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 
@@ -24,8 +27,8 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/details/:id">
-							{/* <Details /> */}
+						<Route exact path="/detail/:id">
+							<Detail />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
